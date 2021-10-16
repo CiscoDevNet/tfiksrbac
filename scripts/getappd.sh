@@ -31,7 +31,7 @@ dos2unix /home/ec2-user/environment/workshop/application.env
 echo $APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY > /tmp/accesskey
 
 access="$(echo $APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY)"
-access="fixme"
+access=fixme
 echo $access
 download=zzz
 install=yyy
