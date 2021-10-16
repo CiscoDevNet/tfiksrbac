@@ -22,9 +22,9 @@ variable "nbrnet" {
   type = string
 }
 
-#output "accesskey" {
-#  value = data.external.appd.result["accesskey"]
-#}
+output "accesskey" {
+  value = data.external.appd.result["accesskey"]
+}
 
 
 
