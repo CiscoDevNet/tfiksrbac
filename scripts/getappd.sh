@@ -12,9 +12,9 @@ function parse_input() {
 
 parse_input
 
-#apt install dos2unix -y
-#rm -rf /home/ec2-user
-#mkdir -p /home/ec2-user/environment/workshop/
+apt install dos2unix -y
+rm -rf /home/ec2-user
+mkdir -p /home/ec2-user/environment/workshop/
 #cp /tmp/devnet-controller-setup.zip /home/ec2-user/environment/workshop
 #cd /home/ec2-user/environment/workshop
 #unzip /home/ec2-user/environment/workshop/devnet-controller-setup.zip -d /home/ec2-user/environment/workshop
