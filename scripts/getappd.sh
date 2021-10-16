@@ -35,5 +35,5 @@ install=yyy
 #echo -n "{\"download\":${download}, \"install\":${install}}" | tr -d ']['
 #echo -n "{\"accesskey\":thisisit}" | tr -d ']['
 #echo -n "{\"download\":${download}, \"install\":${install}}" | tr -d ']['
-echo -n "{\"download\":aaa, \"install\":yyy }" | tr -d ']['
+echo -n "{\"download\":\"aaa\", \"install\":\"yyy\" }" | tr -d ']['
 #END
