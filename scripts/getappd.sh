@@ -30,12 +30,19 @@ function parse_input() {
 #. /home/ec2-user/environment/workshop/application.env
 #echo $APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY > /tmp/accesskey
 
+
+
+
+
+
+
 #access="$(echo $APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY)"
 access="testing"
 #echo -n "{\"download\":${download}, \"install\":${install}}" | tr -d ']['
 #echo -n "{\"accesskey\":thisisit}" | tr -d ']['
 #echo -n "{\"download\":${download}, \"install\":${install}}" | tr -d ']['
 #echo -n "{\"accesskey\":${access}}" | tr -d ']['
-echo -n "{\"accesskey\":\"aaa\"}" | tr -d ']['
+#echo -n "{\"accesskey\":\"aaa\"}" | tr -d ']['
+echo -n "{accesskey:\"${access}\"}"
 #echo -n "{\"accesskey\":\"aaa\", \"install\":\"yyy\" }" | tr -d ']['
 #END
