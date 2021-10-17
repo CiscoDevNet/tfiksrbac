@@ -43,6 +43,6 @@ access="testing"
 #echo -n "{\"download\":${download}, \"install\":${install}}" | tr -d ']['
 #echo -n "{\"accesskey\":${access}}" | tr -d ']['
 #echo -n "{\"accesskey\":\"aaa\"}" | tr -d ']['
-echo -n "{accesskey:\"${access}\"}"
+echo -n "{\"accesskey\":\"${access}\"}"
 #echo -n "{\"accesskey\":\"aaa\", \"install\":\"yyy\" }" | tr -d ']['
 #END
