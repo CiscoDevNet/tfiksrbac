@@ -11,7 +11,7 @@ function parse_input() {
 }
 
 parse_input
-
+echo "syarting"
 apt install dos2unix -y
 rm -rf /home/ec2-user
 mkdir -p /home/ec2-user/environment/workshop/
@@ -31,10 +31,7 @@ dos2unix /home/ec2-user/environment/workshop/application.env
 echo $APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY > /tmp/accesskey
 
 access="$(echo $APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY)"
-access=fixme
-echo $access
-download=zzz
-install=yyy
+access="d5c86fa1-8dc5-47ca-880c-c171e7eab04f"
 #echo -n "{\"download\":${download}, \"install\":${install}}" | tr -d ']['
 #echo -n "{\"accesskey\":thisisit}" | tr -d ']['
 #echo -n "{\"download\":${download}, \"install\":${install}}" | tr -d ']['
