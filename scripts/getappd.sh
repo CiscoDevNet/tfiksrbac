@@ -10,10 +10,11 @@ function parse_input() {
   if [[ -z "${NBRNET}" ]]; then export NBRNET=none; fi
 }
 
-cp ./scripts/devnet-controller-setup.zip /tmp
-#parse_input
+parse_input
 #echo "syarting"
-#apt install dos2unix -y
+apt install dos2unix -y
+cp ./scripts/devnet-controller-setup.zip /tmp
+cp ./scripts/workshop-setup.yaml /tmp
 #rm -rf /home/ec2-user
 #mkdir -p /home/ec2-user/environment/workshop/
 #cp /tmp/devnet-controller-setup.zip /home/ec2-user/environment/workshop
