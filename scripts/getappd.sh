@@ -31,7 +31,7 @@ function parse_input() {
 #echo $APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY > /tmp/accesskey
 
 #access="$(echo $APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY)"
-access=testing
+access="testing"
 #echo -n "{\"download\":${download}, \"install\":${install}}" | tr -d ']['
 #echo -n "{\"accesskey\":thisisit}" | tr -d ']['
 #echo -n "{\"download\":${download}, \"install\":${install}}" | tr -d ']['
