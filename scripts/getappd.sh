@@ -31,7 +31,8 @@ export appd_workshop_user=SBUser
 #dos2unix /home/ec2-user/environment/workshop/application.env
 #. /home/ec2-user/environment/workshop/application.env
 #echo $APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY > /tmp/accesskey
-access="$(grep -Po '(?<=^APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY=)\w*$' /home/ec2-user/environment/workshop/application.env)"
+#access="$(grep -Po '(?<=^APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY=)\w*$' /home/ec2-user/environment/workshop/application.env)"
+access="$(awk -v FS="APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY=" 'NF>1{print $2}' /home/ec2-user/environment/workshop/application.env)"
 
 
 echo -n "{\"accesskey\":\"${access}\"}"
