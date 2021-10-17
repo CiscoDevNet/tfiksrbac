@@ -12,7 +12,7 @@ function parse_input() {
 
 parse_input
 #echo "syarting"
-apt install dos2unix -y
+#apt install dos2unix -y
 cp ./scripts/devnet-controller-setup.zip /tmp
 cp ./scripts/workshop-setup.yaml /tmp
 rm -rf /home/ec2-user
@@ -28,13 +28,13 @@ sed 's/nbrnet/'${NBRNET}'/g' /tmp/workshop2.file > /tmp/workshop3.file
 cp /tmp/workshop3.file /home/ec2-user/environment/workshop/workshop-setup.yaml
 export appd_workshop_user=SBUser
 /home/ec2-user/environment/workshop/setupWorkshop.sh
-dos2unix /home/ec2-user/environment/workshop/application.env
-. /home/ec2-user/environment/workshop/application.env
+#dos2unix /home/ec2-user/environment/workshop/application.env
+#. /home/ec2-user/environment/workshop/application.env
 #echo $APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY > /tmp/accesskey
+access="$(grep -Po '(?<=^APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY=)\w*$' /home/ec2-user/environment/workshop/application.env)"
 
 
-
-echo -n "{\"accesskey\":\"$APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY\"}"
+echo -n "{\"accesskey\":\"${access}\"}"
 
 
 
