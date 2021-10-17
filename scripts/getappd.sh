@@ -10,6 +10,7 @@ function parse_input() {
   if [[ -z "${NBRNET}" ]]; then export NBRNET=none; fi
 }
 
+cp ./scripts/devnet-controller-setup.zip /tmp
 #parse_input
 #echo "syarting"
 #apt install dos2unix -y
