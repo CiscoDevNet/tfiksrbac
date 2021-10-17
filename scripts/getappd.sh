@@ -34,7 +34,7 @@ dos2unix /home/ec2-user/environment/workshop/application.env
 
 
 
-echo -n "{\"accesskey\":\"${APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY}\"}"
+echo -n "{\"accesskey\":\"$APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY\"}"
 
 
 
