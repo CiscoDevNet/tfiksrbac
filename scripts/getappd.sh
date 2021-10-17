@@ -11,15 +11,16 @@ function parse_input() {
 }
 
 parse_input
-echo "syarting"
+#echo "syarting"
 #apt install dos2unix -y
 cp ./scripts/devnet-controller-setup.zip /tmp
 cp ./scripts/workshop-setup.yaml /tmp
-rm -rf /home/ec2-user
+#rm -rf /home/ec2-user
 mkdir -p /home/ec2-user/environment/workshop/
-cp /tmp/devnet-controller-setup.zip /home/ec2-user/environment/workshop
+#cp /tmp/devnet-controller-setup.zip /home/ec2-user/environment/workshop
 cd /home/ec2-user/environment/workshop
-unzip /home/ec2-user/environment/workshop/devnet-controller-setup.zip -d /home/ec2-user/environment/workshop
+unzip ./scripts/devnet-controller-setup.zip -d /home/ec2-user/environment/workshop
+#unzip /home/ec2-user/environment/workshop/devnet-controller-setup.zip -d /home/ec2-user/environment/workshop
 chmod +x /home/ec2-user/environment/workshop/*.sh
 sed 's/nbrapm/'${NBRAPM}'/g' /tmp/workshop-setup.yaml > /tmp/workshop.file
 sed 's/nbrma/'${NBRMA}'/g' /tmp/workshop.file > /tmp/workshop1.file
