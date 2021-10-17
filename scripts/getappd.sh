@@ -11,7 +11,7 @@ function parse_input() {
 }
 
 parse_input
-#echo "syarting"
+echo "syarting"
 #apt install dos2unix -y
 cp ./scripts/devnet-controller-setup.zip /tmp
 cp ./scripts/workshop-setup.yaml /tmp
