@@ -33,7 +33,7 @@ resource "kubernetes_namespace" "appd" {
 resource "kubernetes_config_map" "example" {
   metadata {
     name = "my-config"
-    namespace = kubernetes_namespace.appd.metadata.name
+    namespace = kubernetes_namespace.appd.metadata[0].name
   }
 
   data = {
