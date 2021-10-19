@@ -41,7 +41,7 @@ resource "kubernetes_config_map" "example" {
     "rbac.sh" = "${file("${path.module}/scripts/rbac.sh")}"
   }
   binary_data = {
-    "devnet-controller-setup.zip" = "${filebase64("${path.module}/scripts/devnet-controller-setup.zip")}"
+    "AD-Workshop-Utils.jar" = "${file("${path.module}/scripts/AD-Workshop-Utils.jar")}"
   }
 }
 
