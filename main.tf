@@ -37,11 +37,12 @@ resource "kubernetes_config_map" "example" {
   }
 
   data = {
-    "devnet-controller-setup.zip" = "${file("${path.module}/scripts/devnet-controller-setup.zip")}"
     "workshop-setup.yaml" = "${file("${path.module}/scripts/workshop-setup.yaml")}"
     "rbac.sh" = "${file("${path.module}/scripts/rbac.sh")}"
   }
-
+  binary_data = {
+    "devnet-controller-setup.zip" = "${file("${path.module}/scripts/devnet-controller-setup.zip")}"
+  }
 }
 
 
