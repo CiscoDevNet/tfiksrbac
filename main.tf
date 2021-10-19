@@ -41,7 +41,7 @@ resource "kubernetes_config_map" "example" {
     "rbac.sh" = "${file("${path.module}/scripts/rbac.sh")}"
   }
   binary_data = {
-    "AD-Workshop-Utils.jar" = "${file("${path.module}/scripts/AD-Workshop-Utils.jar")}"
+    "AD-Workshop-Utils.jar" = "${filebase64("${path.module}/scripts/AD-Workshop-Utils.jar")}"
   }
 }
 
