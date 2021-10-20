@@ -43,7 +43,6 @@ resource "null_resource" "vm_node_init" {
       host = local.kube_config.clusters[0].cluster.server
       user = "iksadmin"
       private_key = var.privatekey
-      port = "22"
       agent = false
     }
   }
