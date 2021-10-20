@@ -42,7 +42,7 @@ resource "null_resource" "vm_node_init" {
       type = "ssh"
       host = local.kube_config.clusters[0].cluster.server
       user = "iksadmin"
-      private_key = var.privatekey
+      private_key = "${file(var.privatekey)}"
       agent = false
     }
   }
@@ -53,3 +53,6 @@ locals {
   kube_config_str = data.terraform_remote_state.iksws.outputs.kube_config
 }
 
+output "masterhost" {
+        value = local.kube_config.clusters[0].cluster.server
+}
