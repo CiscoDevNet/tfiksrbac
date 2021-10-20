@@ -56,3 +56,6 @@ locals {
 output "masterhost" {
         value = local.kube_config.clusters[0].cluster.server
 }
+output "kubeconfig-host" {
+    value = yamldecode(local.kube_config).clusters[0].cluster.server
+}
