@@ -16,12 +16,12 @@ module "urlparse" {
   url = local.kube_config.clusters[0].cluster.server
 }
 
-provider "kubernetes" {
-    host = local.kube_config.clusters[0].cluster.server
-    client_certificate = base64decode(local.kube_config.users[0].user.client-certificate-data)
-    client_key = base64decode(local.kube_config.users[0].user.client-key-data)
-    cluster_ca_certificate = base64decode(local.kube_config.clusters[0].cluster.certificate-authority-data)
-}
+#provider "kubernetes" {
+#    host = local.kube_config.clusters[0].cluster.server
+#    client_certificate = base64decode(local.kube_config.users[0].user.client-certificate-data)
+#    client_key = base64decode(local.kube_config.users[0].user.client-key-data)
+#    cluster_ca_certificate = base64decode(local.kube_config.clusters[0].cluster.certificate-authority-data)
+#}
 
 variable "org" {
   type = string
@@ -33,11 +33,11 @@ variable "privatekey" {
   type = string
 }
 
-resource "kubernetes_namespace" "appd" {
-  metadata {
-    name = "appdynamics"
-  }
-}
+#resource "kubernetes_namespace" "appd" {
+#  metadata {
+#    name = "appdynamics"
+#  }
+#}
 
 resource "null_resource" "vm_node_init" {
 
@@ -61,7 +61,4 @@ locals {
 
 output "masterhost" {
         value = local.kube_config.clusters[0].cluster.server
-}
-output "kubeconfig-host" {
-    value = yamldecode(local.kube_config).clusters[0].cluster.server
 }
