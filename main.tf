@@ -46,7 +46,7 @@ resource "null_resource" "vm_node_init" {
     destination = "/tmp"
     connection {
       type = "ssh"
-      host = urlparse.host
+      host = module.urlparse.host
       user = "iksadmin"
       private_key = "${file(var.privatekey)}"
       agent = false
