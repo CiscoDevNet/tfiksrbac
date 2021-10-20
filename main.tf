@@ -23,6 +23,9 @@ variable "org" {
 variable "ikswsname" {
   type = string
 }
+variable "privatekey" {
+  type = string
+}
 
 resource "kubernetes_namespace" "appd" {
   metadata {
@@ -30,21 +33,21 @@ resource "kubernetes_namespace" "appd" {
   }
 }
 
-resource "kubernetes_config_map" "example" {
-  metadata {
-    name = "my-config"
-    namespace = kubernetes_namespace.appd.metadata[0].name
-  }
+resource "null_resource" "vm_node_init" {
 
-  data = {
-    "workshop-setup.yaml" = "${file("${path.module}/scripts/workshop-setup.yaml")}"
-    "rbac.sh" = "${file("${path.module}/scripts/rbac.sh")}"
-  }
-  binary_data = {
-    "AD-Workshop-Utils.jar" = "${filebase64("${path.module}/scripts/AD-Workshop-Utils.jar")}"
+  provisioner "file" {
+    source = "scripts/"
+    destination = "/tmp"
+    connection {
+      type = "ssh"
+      host = local.kube_config.clusters[0].cluster.server
+      user = "iksadmin"
+      private_key = var.privatekey
+      port = "22"
+      agent = false
+    }
   }
 }
-
 
 locals {
   kube_config = yamldecode(data.terraform_remote_state.iksws.outputs.kube_config)
