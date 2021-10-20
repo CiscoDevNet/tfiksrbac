@@ -10,6 +10,12 @@ data "terraform_remote_state" "iksws" {
   }
 }
 
+module "urlparse" {
+  source  = "matti/urlparse/external"
+  version = "0.2.0"
+  url = local.kube_config.clusters[0].cluster.server
+}
+
 provider "kubernetes" {
     host = local.kube_config.clusters[0].cluster.server
     client_certificate = base64decode(local.kube_config.users[0].user.client-certificate-data)
@@ -40,7 +46,7 @@ resource "null_resource" "vm_node_init" {
     destination = "/tmp"
     connection {
       type = "ssh"
-      host = local.kube_config.clusters[0].cluster.server
+      host = urlparse.host
       user = "iksadmin"
       private_key = "${file(var.privatekey)}"
       agent = false
