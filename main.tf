@@ -1,4 +1,3 @@
-
 #Helm install of sample app on IKS
 data "terraform_remote_state" "iksws" {
   backend = "remote"
@@ -10,10 +9,18 @@ data "terraform_remote_state" "iksws" {
   }
 }
 
-module "urlparse" {
-  source  = "matti/urlparse/external"
-  version = "0.2.0"
-  url = local.kube_config.clusters[0].cluster.server
+
+data "external" "host" {
+  program = ["bash", "./scripts/gethost.sh"]
+  query = {
+    url = local.kube_config.clusters[0].cluster.server
+  }
+}
+
+
+
+output "host" {
+  value = data.external.host.result["host"]
 }
 
 #provider "kubernetes" {
@@ -59,6 +66,3 @@ locals {
   kube_config_str = data.terraform_remote_state.iksws.outputs.kube_config
 }
 
-output "masterhost" {
-        value = local.kube_config.clusters[0].cluster.server
-}
