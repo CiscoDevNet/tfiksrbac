@@ -17,6 +17,15 @@ data "terraform_remote_state" "host" {
     }
   }
 }
+data "terraform_remote_state" "global" {
+  backend = "remote"
+  config = {
+    organization = var.org
+    workspaces = {
+      name = var.globalwsname
+    }
+  }
+}
 
 resource "null_resource" "vm_node_init" {
   provisioner "file" {
@@ -25,6 +34,21 @@ resource "null_resource" "vm_node_init" {
     connection {
       type = "ssh"
       host = local.host 
+      user = "iksadmin"
+      private_key = var.privatekey
+      port = "22"
+      agent = false
+    }
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+        "chmod +x /tmp/rbac.sh",
+        "/tmp/rbac.sh ${local.nbrapm} ${local.nbrma} ${local.nbrsim} ${local.nbrnet}",
+    ]
+    connection {
+      type = "ssh"
+      host = local.host
       user = "iksadmin"
       private_key = var.privatekey
       port = "22"
@@ -49,6 +73,10 @@ variable "privatekey" {
 locals {
   kube_config = yamldecode(data.terraform_remote_state.iksws.outputs.kube_config)
   host = data.terraform_remote_state.host.outputs.host
+  nbrapm = data.terraform_remote_state.global.outputs.nbrapm
+  nbrma = data.terraform_remote_state.global.outputs.nbrma
+  nbrsim = data.terraform_remote_state.global.outputs.nbrsim
+  nbrnet = data.terraform_remote_state.global.outputs.nbrnet
 }
 
 

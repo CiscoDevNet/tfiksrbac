@@ -5,6 +5,7 @@ sudo apt install openjdk-8-jdk -y
 sudo rm -rf /home/ec2-user
 sudo mkdir -p /home/ec2-user/environment/workshop/
 sudo cp /tmp/devnet-controller-setup.zip /home/ec2-user/environment/workshop
+kubectl delete secret accesssecret
 sudo unzip /home/ec2-user/environment/workshop/devnet-controller-setup.zip -d /home/ec2-user/environment/workshop
 sudo chmod +x /home/ec2-user/environment/workshop/setupWorkshop.sh
 sudo chmod +x /home/ec2-user/environment/workshop/teardownWorkshop.sh
