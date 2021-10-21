@@ -24,6 +24,7 @@ port="$(echo $hostport | sed -e 's,^.*:,:,g' -e 's,.*:\([0-9]*\).*,\1,g' -e 's,[
 path="$(echo $url | grep / | cut -d/ -f2-)"
 
 #echo -n "{\"host\":\"${host}\"}"
-echo -n "{\"host\":\"${URL}\"}"
+#echo -n "{\"host\":\"${URL}\"}"
+echo -n "{\"host\":\"testing\"}"
 
 #END
