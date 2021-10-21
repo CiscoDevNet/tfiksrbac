@@ -67,6 +67,9 @@ variable "hostwsname" {
   type = string
 }
 
+variable "globalwsname" {
+  type = string
+}
 variable "privatekey" {
   type = string
 }
