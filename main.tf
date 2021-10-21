@@ -51,8 +51,5 @@ locals {
   host = data.terraform_remote_state.host.outputs.host
 }
 
-output "host" {
-  value = data.external.host.result["host"]
-}
 
 
