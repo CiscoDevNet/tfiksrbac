@@ -7,7 +7,6 @@ function parse_input() {
   if [[ -z "${URL}" ]]; then export URL=none; fi
 }
 
-#!/bin/bash
 
 # extract the protocol
 proto="$(echo $URL | grep :// | sed -e's,^\(.*://\).*,\1,g')"
@@ -24,7 +23,7 @@ port="$(echo $hostport | sed -e 's,^.*:,:,g' -e 's,.*:\([0-9]*\).*,\1,g' -e 's,[
 # extract the path (if any)
 path="$(echo $url | grep / | cut -d/ -f2-)"
 
-echo -n "{\"host\":\"${host}\"}"
-#echo -n "{\"host\":\"${url}\"}"
+#echo -n "{\"host\":\"${host}\"}"
+echo -n "{\"host\":\"${URL}\"}"
 
 #END
