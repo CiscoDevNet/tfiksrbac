@@ -7,7 +7,7 @@ function parse_input() {
   if [[ -z "${URL}" ]]; then export URL=none; fi
 }
 
-parse_input()
+parse_input
 
 # extract the protocol
 #proto="$(echo ${URL} | grep :// | sed -e's,^\(.*://\).*,\1,g')"
@@ -24,9 +24,15 @@ parse_input()
 # extract the path (if any)
 #path="$(echo $url | grep / | cut -d/ -f2-)"
 
-host="ppp"
+host=ppp
 echo -n "{\"host\":\"${host}\"}"
 #echo -n "{\"host\":\"${URL}\"}"
 #echo -n "{\"host\":\"testing\"}"
+
+
+
+
+
+
 
 #END
