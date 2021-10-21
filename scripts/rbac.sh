@@ -1,5 +1,4 @@
 sudo apt update
-sudo apt install dos2unix -y
 sudo apt install unzip -y
 sudo apt install openjdk-8-jdk -y
 sudo rm -rf /home/ec2-user
@@ -15,9 +14,9 @@ sed 's/nbrma/'$2'/g' /tmp/workshop.file > /tmp/workshop1.file
 sed 's/nbrsim/'$3'/g' /tmp/workshop1.file > /tmp/workshop2.file
 sed 's/nbrnet/'$4'/g' /tmp/workshop2.file > /tmp/workshop3.file
 sudo cp /tmp/workshop3.file /home/ec2-user/environment/workshop/workshop-setup.yaml
-export appd_workshop_user=SBUser
 sudo /home/ec2-user/environment/workshop/setupWorkshop.sh
-#dos2unix /home/ec2-user/environment/workshop/application.env
-sudo source /home/ec2-user/environment/workshop/application.env
+sudo -s
+cd /home/ec2-user/environment/workshop
+sudo source application.env
 echo $APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY > /tmp/accesskey
 
