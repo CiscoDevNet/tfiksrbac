@@ -22,7 +22,8 @@ cp /tmp/workshop3.file /home/ec2-user/environment/workshop/workshop-setup.yaml
 /home/ec2-user/environment/workshop/setupWorkshop.sh
 #sudo -s
 cd /home/ec2-user/environment/workshop
-source application.env
-echo $APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY > /tmp/accesskey
+access="$(awk -v FS="APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY=" 'NF>1{print $2}' /home/ec2-user/environment/workshop/application.env)"
+#source application.env
+echo $access > /tmp/accesskey
 dos2unix /tmp/accesskey
 kubectl create secret generic accesssecret --from-file=/tmp/accesskey
