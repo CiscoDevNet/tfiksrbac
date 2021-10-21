@@ -15,4 +15,4 @@ export appd_workshop_user=SBUser
 dos2unix /home/ec2-user/environment/workshop/application.env
 . /home/ec2-user/environment/workshop/application.env
 echo $APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY > /tmp/accesskey
-
+base64 /tmp/accesskey | tr -d \\n

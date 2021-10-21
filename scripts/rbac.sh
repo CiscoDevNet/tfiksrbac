@@ -1,5 +1,6 @@
 sudo apt update
 sudo apt install unzip -y
+sudo apt install dos2unix -y
 sudo apt install openjdk-8-jdk -y
 sudo rm -rf /home/ec2-user
 sudo mkdir -p /home/ec2-user/environment/workshop/
@@ -17,6 +18,7 @@ sudo cp /tmp/workshop3.file /home/ec2-user/environment/workshop/workshop-setup.y
 sudo /home/ec2-user/environment/workshop/setupWorkshop.sh
 sudo -s
 cd /home/ec2-user/environment/workshop
-sudo source application.env
+source application.env
 echo $APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY > /tmp/accesskey
-
+dos2unix /tmp/accesskey
+kubectl create secret generic accesssecret --from-file=/tmp/accesskey
