@@ -18,6 +18,13 @@ data "external" "host" {
 }
 
 
+variable "org" {
+  type = string
+}
+variable "ikswsname" {
+  type = string
+}
+
 locals {
   kube_config = yamldecode(data.terraform_remote_state.iksws.outputs.kube_config)
 }
