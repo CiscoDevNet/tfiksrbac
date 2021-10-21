@@ -8,12 +8,13 @@ data "terraform_remote_state" "iksws" {
     }
   }
 }
-data "external" "host" {
-  program = ["bash", "./scripts/gethost.sh"]
-  query = {
-    #url = "https://10.88.168.175:6443"
-    #url = "http://myweb.com:8080"
-    url = local.kube_config.clusters[0].cluster.server
+data "terraform_remote_state" "host" {
+  backend = "remote"
+  config = {
+    organization = var.org
+    workspaces = {
+      name = var.hostwsname
+    }
   }
 }
 
@@ -23,7 +24,7 @@ resource "null_resource" "vm_node_init" {
     destination = "/tmp"
     connection {
       type = "ssh"
-      host = data.external.host.result["host"] 
+      host = local.host 
       user = "iksadmin"
       private_key = var.privatekey
       port = "22"
@@ -38,12 +39,16 @@ variable "org" {
 variable "ikswsname" {
   type = string
 }
+variable "hostwsname" {
+  type = string
+}
 
 variable "privatekey" {
   type = string
 }
 locals {
   kube_config = yamldecode(data.terraform_remote_state.iksws.outputs.kube_config)
+  host = data.terraform_remote_state.host.outputs.host
 }
 
 output "host" {
