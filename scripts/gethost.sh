@@ -10,7 +10,7 @@ function parse_input() {
 parse_input()
 
 # extract the protocol
-proto="$(echo $URL | grep :// | sed -e's,^\(.*://\).*,\1,g')"
+proto="$(echo ${URL} | grep :// | sed -e's,^\(.*://\).*,\1,g')"
 # remove the protocol
 url="$(echo ${URL/$proto/})"
 # extract the user (if any)
