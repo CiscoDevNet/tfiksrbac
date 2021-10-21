@@ -24,8 +24,9 @@ parse_input()
 # extract the path (if any)
 #path="$(echo $url | grep / | cut -d/ -f2-)"
 
-#echo -n "{\"host\":\"${host}\"}"
-echo -n "{\"host\":\"${URL}\"}"
+host="ppp"
+echo -n "{\"host\":\"${host}\"}"
+#echo -n "{\"host\":\"${URL}\"}"
 #echo -n "{\"host\":\"testing\"}"
 
 #END
