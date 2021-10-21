@@ -10,9 +10,9 @@ function parse_input() {
 #!/bin/bash
 
 # extract the protocol
-proto="$(echo $1 | grep :// | sed -e's,^\(.*://\).*,\1,g')"
+proto="$(echo $URL | grep :// | sed -e's,^\(.*://\).*,\1,g')"
 # remove the protocol
-url="$(echo ${1/$proto/})"
+url="$(echo ${URL/$proto/})"
 # extract the user (if any)
 user="$(echo $url | grep @ | cut -d@ -f1)"
 # extract the host and port
@@ -24,7 +24,7 @@ port="$(echo $hostport | sed -e 's,^.*:,:,g' -e 's,.*:\([0-9]*\).*,\1,g' -e 's,[
 # extract the path (if any)
 path="$(echo $url | grep / | cut -d/ -f2-)"
 
-#echo -n "{\"host\":\"${host}\"}"
-echo -n "{\"host\":\"${url}\"}"
+echo -n "{\"host\":\"${host}\"}"
+#echo -n "{\"host\":\"${url}\"}"
 
 #END
