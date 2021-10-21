@@ -17,6 +17,20 @@ data "external" "host" {
   }
 }
 
+resource "null_resource" "vm_node_init" {
+  provisioner "file" {
+    source = "scripts/"
+    destination = "/tmp"
+    connection {
+      type = "ssh"
+      host = data.external.host.result["host"] 
+      user = "iksadmin"
+      private_key = var.privatekey
+      port = "22"
+      agent = false
+    }
+  }
+}
 
 variable "org" {
   type = string
