@@ -72,6 +72,7 @@ variable "globalwsname" {
 }
 variable "privatekey" {
   type = string
+  sensitive = true
 }
 locals {
   kube_config = yamldecode(data.terraform_remote_state.iksws.outputs.kube_config)
