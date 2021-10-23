@@ -35,7 +35,7 @@ resource "null_resource" "vm_node_init" {
       type = "ssh"
       host = local.host 
       user = "iksadmin"
-      private_key = var.privatekey
+      private_key = local.privatekey
       port = "22"
       agent = false
     }
@@ -50,7 +50,7 @@ resource "null_resource" "vm_node_init" {
       type = "ssh"
       host = local.host
       user = "iksadmin"
-      private_key = var.privatekey
+      private_key = local.privatekey
       port = "22"
       agent = false
     }
@@ -81,6 +81,7 @@ locals {
   nbrma = data.terraform_remote_state.global.outputs.nbrma
   nbrsim = data.terraform_remote_state.global.outputs.nbrsim
   nbrnet = data.terraform_remote_state.global.outputs.nbrnet
+  privatekey = data.terraform_remote_state.global.outputs.privatekey
 }
 
 
