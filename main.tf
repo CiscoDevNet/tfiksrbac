@@ -78,6 +78,7 @@ locals {
   nbrsim = data.terraform_remote_state.global.outputs.nbrsim
   nbrnet = data.terraform_remote_state.global.outputs.nbrnet
   privatekey = data.terraform_remote_state.global.outputs.privatekey
+  dockeruser = data.terraform_remote_state.global.outputs.dockeruser
 }
 
 
