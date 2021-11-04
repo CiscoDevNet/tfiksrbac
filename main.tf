@@ -81,6 +81,7 @@ locals {
   #privatekey = data.terraform_remote_state.global.outputs.privatekey
   privatekey = base64decode(data.terraform_remote_state.global.outputs.privatekey)
   dockeruser = data.terraform_remote_state.global.outputs.dockeruser
+  dockerpass = data.terraform_remote_state.global.outputs.dockerpass
 }
 
 
