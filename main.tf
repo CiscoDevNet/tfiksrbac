@@ -45,6 +45,7 @@ resource "null_resource" "vm_node_init" {
     inline = [
         "chmod +x /tmp/rbac.sh",
         "/tmp/rbac.sh ${local.nbrapm} ${local.nbrma} ${local.nbrsim} ${local.nbrnet}",
+	"sudo docker login containers.cisco.com -u ${local.dockeruser} -p ${local.dockerpass}",
     ]
     connection {
       type = "ssh"
