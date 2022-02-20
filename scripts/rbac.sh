@@ -19,6 +19,7 @@ sed 's/nbrma/'$2'/g' /tmp/workshop.file > /tmp/workshop1.file
 sed 's/nbrsim/'$3'/g' /tmp/workshop1.file > /tmp/workshop2.file
 sed 's/nbrnet/'$4'/g' /tmp/workshop2.file > /tmp/workshop3.file
 cp /tmp/workshop3.file /home/ec2-user/environment/workshop/workshop-setup.yaml
+export appd_workshop_user=SBUser
 /home/ec2-user/environment/workshop/setupWorkshop.sh
 #sudo -s
 cd /home/ec2-user/environment/workshop
