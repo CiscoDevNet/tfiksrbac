@@ -35,8 +35,7 @@ resource "null_resource" "vm_node_init" {
       type = "ssh"
       host = local.host 
       user = "iksadmin"
-      #private_key = local.privatekey
-      private_key = var.privatekey
+      private_key = local.privatekey
       port = "22"
       agent = false
     }
@@ -52,17 +51,13 @@ resource "null_resource" "vm_node_init" {
       type = "ssh"
       host = local.host
       user = "iksadmin"
-      #private_key = local.privatekey
-      private_key = var.privatekey
+      private_key = local.privatekey
       port = "22"
       agent = false
     }
   }
 }
 
-variable "privatekey" {
-  type = string
-}
 variable "org" {
   type = string
 }
